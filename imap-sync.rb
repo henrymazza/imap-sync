@@ -2,7 +2,7 @@
 
 if $PROGRAM_NAME == __FILE__
   require 'yaml'
-  if ARGV
+  unless ARGV.empty?
     require 'open-uri'
     begin
       C = YAML.load(open(ARGV[0]))
@@ -16,11 +16,11 @@ end
 
 require 'net/imap'
 
-def dd(message)
+def ds(message)
   puts "[#{C['source']['host']}] #{message}"
 end
 
-def ds(message)
+def dd(message)
   puts "[#{C['destination']['host']}] #{message}"
 end
 
