@@ -46,8 +46,16 @@ dest = Net::IMAP.new(C['destination']['host'], C['destination']['port'], C['dest
 dd 'logging in...'
 dest.login(C['destination']['username'], C['destination']['password'])
 
+# Guarantees that none is left behind 
+source.list('', '*').each do |f|
+  C['mappings'][f.name] = f.name unless C['mappings'][f.name]
+end
+
 # Loop through folders and copy messages.
 C['mappings'].each do |source_folder, dest_folder|
+
+  puts "\nProcessing: #{source_folder} => #{dest_folder}"
+
   # Open source folder in read-only mode.
   begin
     ds "selecting folder '#{source_folder}'..."

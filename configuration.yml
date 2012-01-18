@@ -18,7 +18,7 @@ destination:
 # is the name on the destination server. Any folder not specified here will be ignored. If a destination folder does
 # not exist, it will be created.
 mappings:
-  "Inbox": "Inbox"
-  # "[Gmail] Drafts": "Drafts"
-  # "[Gmail] Sent Mail": "Sent"
-  # "[Gmail] Trash": "Trash"
+  "INBOX": "Inbox"
+  "INBOX.Archive" :
+  "INBOX.Sent" : "[Gmail]/Sent Mail"
+  "INBOX.Sent Messages" : '[Gmail]/Sent Mail'
